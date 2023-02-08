@@ -8,6 +8,8 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
   GpsBloc()
       : super(
             const GpsState(isGpsEnable: false, isGpsPermissionGranted: false)) {
-    on<GpsEvent>((event, emit) {});
+    on<GpsAndPermissionEvent>((event, emit) => emit(state.copyWith(
+        isGpsEnable: event.isGpsEnable,
+        isGpsPermissionGranted: event.isGpsPermissionGranted)));
   }
 }
