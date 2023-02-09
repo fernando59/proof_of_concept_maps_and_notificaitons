@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:proof_of_concept_maps_and_notifications/blocs/gps/gps_bloc.dart';
+import 'package:proof_of_concept_maps_and_notifications/blocs/blocs.dart';
 import 'package:proof_of_concept_maps_and_notifications/screens/screens.dart';
 
 void main() {
-  runApp(MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => GpsBloc())],
-      child: const MyApp()));
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (context) => GpsBloc()),
+    BlocProvider(create: (context) => LocationBloc()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Maps  App',
-        // home: LoadingScreen());
-        home: GpsAccessScreen());
+        home: LoadingScreen());
+    // home: GpsAccessScreen());
   }
 }
